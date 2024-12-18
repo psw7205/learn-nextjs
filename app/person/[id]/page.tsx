@@ -1,5 +1,5 @@
-import styles from '@/styles/detail.module.css'
-import { API_URL } from '@/app/constants'
+import styles from "@/styles/detail.module.css";
+import { API_URL } from "@/app/person/constants";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -34,14 +34,14 @@ interface PersonDetailProps {
   netWorth: number;
 }
 
-export async function generateMetadata ({ params }: Props) {
-  const id = (await params).id
-  return { title: id }
+export async function generateMetadata({ params }: Props) {
+  const id = (await params).id;
+  return { title: id };
 }
 
-export default async function PersonPage ({ params }: Props) {
-  const id = (await params).id
-  const res = await fetch(`${API_URL}/person/${id}`)
+export default async function PersonPage({ params }: Props) {
+  const id = (await params).id;
+  const res = await fetch(`${API_URL}/person/${id}`);
   const {
     city,
     name,
@@ -52,13 +52,13 @@ export default async function PersonPage ({ params }: Props) {
     netWorth,
     about,
     squareImage,
-  }: PersonDetailProps = await res.json()
+  }: PersonDetailProps = await res.json();
 
   return (
     <div>
       <div className={styles.container}>
         <div>
-          <img src={squareImage} alt="" className={styles.img}/>
+          <img src={squareImage} alt="" className={styles.img} />
         </div>
         <div>
           <div className={styles.title}>{name}</div>
@@ -69,7 +69,9 @@ export default async function PersonPage ({ params }: Props) {
             </div>
             <div>
               <div>Location</div>
-              <div>{`${city} ,`} {`${country}`}</div>
+              <div>
+                {`${city} ,`} {`${country}`}
+              </div>
             </div>
             <div>
               <div>Industries</div>
@@ -93,12 +95,13 @@ export default async function PersonPage ({ params }: Props) {
             <div key={idx}>
               <div>Ticker: {finance.ticker}</div>
               <div>Shares: {finance.numberOfShares.toLocaleString()}</div>
-              {finance.exerciseOptionPrice &&
-                <div>Exercise Price: ${finance.exerciseOptionPrice}</div>}
+              {finance.exerciseOptionPrice && (
+                <div>Exercise Price: ${finance.exerciseOptionPrice}</div>
+              )}
             </div>
           ))}
         </div>
       </div>
     </div>
-  )
+  );
 }

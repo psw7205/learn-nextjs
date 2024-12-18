@@ -1,4 +1,5 @@
-export const API_URL = "https://billions-api.nomadcoders.workers.dev";
+export const API_URL = process.env.API_URL || "";
+
 export interface PersonProps {
   id: string;
   name: string;

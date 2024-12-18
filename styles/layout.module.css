@@ -1,7 +1,10 @@
+.layout {
+  background-color: #27272a;
+  color: #e4e4e7;
+}
+
 .container {
   max-width: 1024px;
   margin: 0 auto;
   padding: 100px 20px;
-  color: #e4e4e7;
-  background-color: #27272a;
 }
