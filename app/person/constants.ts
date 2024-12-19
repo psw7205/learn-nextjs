@@ -1,4 +1,4 @@
-export const API_URL = process.env.API_URL || "";
+export const PERSON_API_URL = process.env.PERSON_API_URL || "";
 
 export interface PersonProps {
   id: string;
