@@ -1,5 +1,5 @@
 import styles from "@/styles/detail.module.css";
-import { API_URL } from "@/app/person/constants";
+import { PERSON_API_URL } from "@/app/person/constants";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function PersonPage({ params }: Props) {
   const id = (await params).id;
-  const res = await fetch(`${API_URL}/person/${id}`);
+  const res = await fetch(`${PERSON_API_URL}/person/${id}`);
   const {
     city,
     name,
