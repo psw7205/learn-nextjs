@@ -3,6 +3,7 @@ import { SVGProps } from "react";
 export const navigation = [
   { name: "Billionaires", href: "/person" },
   { name: "Tailwind", href: "/tailwind" },
+  { name: "Login Form", href: "/login-form" },
 ];
 
 export const socials = [
