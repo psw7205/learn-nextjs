@@ -22,7 +22,7 @@ export const socials = [
   },
   {
     name: "Email",
-    href: "mailto://psw7205@gmail.com",
+    href: "mailto:psw7205@gmail.com",
     icon: (props: SVGProps<SVGSVGElement>) => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
