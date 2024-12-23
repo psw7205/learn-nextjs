@@ -44,7 +44,7 @@ export default function LoginForm() {
             type="email"
             required
             placeholder="Email"
-            value={state?.prevData?.email}
+            errors={state?.errors?.fieldErrors.email}
             icon={
               <EnvelopeIcon
                 aria-hidden="true"
@@ -59,7 +59,7 @@ export default function LoginForm() {
             type="text"
             required
             placeholder="Username"
-            value={state?.prevData?.username}
+            errors={state?.errors?.fieldErrors.username}
             icon={
               <UserIcon
                 aria-hidden="true"
@@ -74,7 +74,7 @@ export default function LoginForm() {
             type="password"
             required
             placeholder="Password"
-            error={state?.error}
+            errors={state?.errors?.fieldErrors.password}
             icon={
               <KeyIcon
                 aria-hidden="true"

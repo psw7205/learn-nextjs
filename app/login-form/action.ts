@@ -1,19 +1,37 @@
 "use server";
 
-export async function handleForm(state: unknown, formData: FormData) {
-  console.log({ state });
-  const password = formData.get("password");
-  if (password === "12345") {
+import { z } from "zod";
+
+const formScheme = z.object({
+  email: z
+    .string()
+    .email()
+    .endsWith("@zod.com", "Only @zod.com emails are allowed"),
+  username: z.string().min(5, "Username should be at least 5 characters long."),
+  password: z
+    .string()
+    .min(10, "Password should be at least 10 characters long.")
+    .regex(/\d+/, "Password should contain at least one number (0~9)"),
+});
+
+export async function handleForm(_: unknown, formData: FormData) {
+  const data = {
+    email: formData.get("email"),
+    username: formData.get("username"),
+    password: formData.get("password"),
+  };
+
+  const res = formScheme.safeParse(data);
+  console.log({ res });
+  if (res.success) {
     return {
       ok: true,
     };
   } else {
+    console.log(res.error);
     return {
-      error: "wrong password",
-      prevData: {
-        email: formData.get("email")?.toString(),
-        username: formData.get("username")?.toString(),
-      },
+      ok: false,
+      errors: res.error.flatten(),
     };
   }
 }
